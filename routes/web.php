@@ -53,13 +53,6 @@ Route::middleware('splade')->group(function () {
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-Route::get('/clearall', function() {
-    $exitCode1 = Artisan::call('cache:clear');
-    $exitCode2 = Artisan::call('view:clear');
-    $exitCode3 = Artisan::call('route:clear');
-    $exitCode4 = Artisan::call('config:cache');
-    return view('home');
- });
 
 
     require __DIR__.'/auth.php';

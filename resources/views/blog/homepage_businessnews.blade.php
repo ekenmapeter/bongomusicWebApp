@@ -72,8 +72,8 @@
                                 <Link href="#" class="text-xs text-indigo-600 uppercase font-medium mb-3 flex items-center hover:text-gray-900 transition duration-500 ease-in-out">
                                     Business News
                                 </Link>
-                                <Link href="#" class="text-gray-900 text-base font-bold text-lg mb-2 hover:text-indigo-600 transition duration-500 ease-in-out">{{ $getFirstBusinessPost['title']['rendered'] }}</Link>
-                                <p class="text-gray-700 text-xs mt-2">{{ Str::limit(strip_tags(html_entity_decode($getFirstBusinessPost['excerpt']['rendered']))  , 160)}}</p>
+                                <Link href="{{ route('blog.single', ['slug' => $getFirstBusinessPost['slug']]) }}" class="text-gray-900 text-base font-bold text-lg mb-2 hover:text-indigo-600 transition duration-500 ease-in-out">{{ $getFirstBusinessPost['title']['rendered'] }}</Link>
+                                <p class="text-gray-700 text-xs mt-2 lowercase">{{ Str::limit(strip_tags(html_entity_decode($getFirstBusinessPost['excerpt']['rendered']))  , 160)}}</p>
                             </div>
                             <div class="flex flex-row items-center gap-1 mt-2">
                               <svg
@@ -111,9 +111,9 @@
                         <div class="text-md border-b pb-4 mb-4">
                             <div class="flex">
                             <img class="h-14 w-14 mr-4 flex-shrink-0" src="{{ $data['featured_media_src_url']}}" alt="{{ $data['title']['rendered'] }}" />
-                            <Link class="text-gray-900 hover:text-indigo-600 font-semibold text-sm" href="#">{{ $data['title']['rendered'] }}</Link>
+                            <Link class="text-gray-900 hover:text-indigo-600 font-semibold text-sm" href="{{ route('blog.single', ['slug' => $data['slug']]) }}">{{ $data['title']['rendered'] }}</Link>
                             </div>
-                            <p class="text-gray-500 text-xs hover:text-indigo-600">{{ Str::limit(strip_tags(html_entity_decode($data['excerpt']['rendered'])) , 160) }}</p>
+                            <p class="text-gray-500 text-xs lowercase">{{ Str::limit(strip_tags(html_entity_decode($data['excerpt']['rendered'])) , 160) }}</p>
                             <div class="flex flex-row items-center gap-1 mt-2 justify-end">
                               <svg
                                             class="text-blue-600"
